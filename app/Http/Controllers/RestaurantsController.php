@@ -37,7 +37,7 @@ class RestaurantsController extends Controller
      */
     public function show(Restaurants $restaurants)
     {
-        //
+        return view('restaurants.show')->with('restaurants', $restaurants);
     }
 
     /**

@@ -12,12 +12,14 @@
                     <h3 class="font-semibold text-lg mb-4"> List of Restaurants:</h3>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @foreach($restaurants as $restaurant)
+                        <a href="{{ route('restaurants.show', $restaurant )}}">
                             <x-restaurant-card
                                 :name="$restaurant->name"
                                 :image="$restaurant->image"
                                 :description="$restaurant->description"
                                 :location="$restaurant->location"
                             />
+                        </a>
                         @endforeach
                     </div>
                 </div>
