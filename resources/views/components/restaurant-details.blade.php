@@ -1,4 +1,3 @@
-
 @props(['name', 'description', 'location', 'image'])
 
 <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300 max-w-xl mx-auto">
@@ -12,4 +11,6 @@
 
     <h3 class="text-grey-800 font-semibold mb-2" style="font-size: 2rem;">Description</h3>
     <p class="text-grey-700 leading-relaxed">{{ $description }}</p>
+
+    
 </div>

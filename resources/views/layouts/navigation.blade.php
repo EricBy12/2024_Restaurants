@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('restaurants.index')" :active="request()->routeIs('restaurants.index')">
                         {{ __('View All Restaurants') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('restaurants.create')" :active="request()->routeIs('restaurants.create')">
+                        {{ __('Create new Restaurant') }}
+                    </x-nav-link>
                 </div>
             </div>
 

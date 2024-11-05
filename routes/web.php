@@ -17,7 +17,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index');
-    Route::get('/restaurants/{restaurant}', [RestaurantsController::class, 'show'])->name('restaurants.show');
+    Route::get('/restaurants/create', [RestaurantsController::class, 'create'])->name('restaurants.create');
+    Route::get('/restaurants/{restaurants}', [RestaurantsController::class, 'show'])->name('restaurants.show');
+    Route::post('/restaurants', [RestaurantsController::class, 'store'])->name('restaurants.store');
 });
 
 

@@ -22,6 +22,7 @@ class RestaurantsController extends Controller
     public function create()
     {
         //
+        return view('restaurants.create');
     }
 
     /**
@@ -36,8 +37,8 @@ class RestaurantsController extends Controller
      * Display the specified resource.
      */
     public function show(Restaurants $restaurants)
-    {
-        return view('restaurants.show')->with('restaurants', $restaurants);
+    {        
+        return view('restaurants.show')->with('restaurants', $restaurants);                
     }
 
     /**
