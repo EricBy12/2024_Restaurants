@@ -22,7 +22,6 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
-        //
         return view('restaurants.create');
     }
 
@@ -34,18 +33,18 @@ class RestaurantsController extends Controller
         $request->validate([
             'name' => 'required',
             'description' => 'required|max:500',
-            'locarion' => 'required|max:500',
-            'image' => 'required|image|mimes:jpeg,pngS,jpg,gif|max:2048',
+            'location' => 'required|max:500',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        //Cheks if the image has been uploaded and handles it
+        //Checks if the image has been uploaded and handles it
         if ($request->hasFile('image')) {
             $imageName = time(). '.' .$request->image->extension();
             $request->image->move(public_path('images/restaurants'), $imageName);
         }
 
         //Create a restaurant record in the database
-        Restaurant::create([
+        Restaurants::create([
             'name' => $request->name,
             'description' => $request->description,
             'location' => $request->location,
@@ -55,7 +54,7 @@ class RestaurantsController extends Controller
         ]);
 
         //Redirect to the index page with a success message
-        return to_rout('restaurants.index')->with('success', 'Restaurant created successfully!');
+        return to_route('restaurants.index')->with('success', 'Restaurant created successfully!');
     }
 
     /**
