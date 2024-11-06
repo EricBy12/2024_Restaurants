@@ -36,7 +36,7 @@ class RestaurantsController extends Controller
             'description' => 'required|max:500',
             'locarion' => 'required|max:500',
             'image' => 'required|image|mimes:jpeg,pngS,jpg,gif|max:2048',
-        ])
+        ]);
 
         //Cheks if the image has been uploaded and handles it
         if ($request->hasFile('image')) {

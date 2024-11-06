@@ -21,6 +21,6 @@ class RestarantForm extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.restarant-form');
+        return view('components.restaurant-form');
     }
 }
