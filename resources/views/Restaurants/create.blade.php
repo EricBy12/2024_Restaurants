@@ -32,3 +32,41 @@
         <p class="text-sm text-red-600">{{$message}}</p>
         @enderror
     </div>
+
+    @isset($restaurants->image)
+    <div class="mb-4">
+        <img scr="{{asset($restaurants->image) }}" alt="Restaurant Image" class="w-24 h-32 object-cover">
+    </div>
+    @endisset
+
+    <div>
+
+    <x-primary-button>
+        {{isset($restaurants)? 'Update Restaurant':'Add Restaurant'}}
+    </x-primary-button>
+    </div>
+</form>
+
+<!-- is this all in the wrong place? ^^^ -->
+
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-x1 text-grey-800 leading-tight">
+            {{ __('Create New Restaurant')}}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-grey-900">
+                    <h3 class="font-semibold text-lg mb-4">Add New Restaurant:</h3>
+                    <x-book-form
+                    :action="route('restaurants.store')"
+                    :method="''POST"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurants;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantsController extends Controller
 {
@@ -30,7 +31,31 @@ class RestaurantsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|max:500',
+            'locarion' => 'required|max:500',
+            'image' => 'required|image|mimes:jpeg,pngS,jpg,gif|max:2048',
+        ])
+
+        //Cheks if the image has been uploaded and handles it
+        if ($request->hasFile('image')) {
+            $imageName = time(). '.' .$request->image->extension();
+            $request->image->move(public_path('images/restaurants'), $imageName);
+        }
+
+        //Create a restaurant record in the database
+        Restaurant::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'location' => $request->location,
+            'image' => $imageName,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Redirect to the index page with a success message
+        return to_rout('restaurants.index')->with('success', 'Restaurant created successfully!');
     }
 
     /**
