@@ -68,9 +68,11 @@ class RestaurantsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Restaurants $restaurants)
+    public function edit(Restaurants $restaurants, Request $request)
     {
-        //
+
+        return view('restaurants.edit', compact('restaurants'));
+        
     }
 
     /**
@@ -78,14 +80,43 @@ class RestaurantsController extends Controller
      */
     public function update(Request $request, Restaurants $restaurants)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|max:500',
+            'location' => 'required|max:500',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        //Checks if the image has been uploaded and handles it
+        if ($request->hasFile('image')) {
+            $imageName = time(). '.' .$request->image->extension();
+            $request->image->move(public_path('images/restaurants'), $imageName);
+        }
+
+        //Update a restaurant record in the database
+        $restaurants->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'location' => $request->location,
+            'image' => $imageName,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        //Redirect to the index page with a success message
+        return to_route('restaurants.index')->with('success', 'Restaurant updated successfully!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Restaurants $restaurants)
-    {
-        //
-    }
+    public function destroy(Request $request, Restaurants $restaurants)
+{
+
+    // Delete the restaurant record from the database
+    $restaurants->delete();
+
+    // Redirect with a success message
+    return to_route('restaurants.index')->with('success', 'Restaurant deleted successfully!');
+}
+
 }

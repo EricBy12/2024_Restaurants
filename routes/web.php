@@ -19,7 +19,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index');
     Route::get('/restaurants/create', [RestaurantsController::class, 'create'])->name('restaurants.create');
     Route::get('/restaurants/{restaurants}', [RestaurantsController::class, 'show'])->name('restaurants.show');
+    Route::get('/restaurants/{restaurants}/edit', [RestaurantsController::class, 'edit'])->name('restaurants.edit');
+    Route::get('/restaurants/{restaurants}/update', [RestaurantsController::class, 'update'])->name('restaurants.update');
     Route::post('/restaurants', [RestaurantsController::class, 'store'])->name('restaurants.store');
+    Route::delete('/restaurants/{restaurants}', [RestaurantsController::class, 'destroy'])->name('restaurants.destroy');
 });
 
 
