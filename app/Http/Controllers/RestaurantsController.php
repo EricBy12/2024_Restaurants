@@ -112,7 +112,7 @@ class RestaurantsController extends Controller
     public function destroy(Request $request, Restaurants $restaurants)
 {
 
-    // Delete the restaurant record from the database
+    // Delete a restaurant from the database
     $restaurants->delete();
 
     // Redirect back to the index page with a success message

@@ -1,5 +1,4 @@
 @props(['name', 'description', 'location', 'image'])
-
 <div class=""> <!-- class contents removed and put into index -->
     <h4 class="font-bold text-lg">{{ $name }}</h4>
     <img src="{{asset( 'images/restaurants/' . $image)}}" alt="{{ $name }}">
