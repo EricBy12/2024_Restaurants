@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-x1 text-grey-800 leading-tight">
-            {{__('Create New Restaurant')}}
+            {{__('Edit Restaurant')}}
         </h2>
     </x-slot>
 
@@ -13,8 +13,8 @@
                         <h3 class="font-semibold text-lg mb-4">Edit Restaurant:</h3>
                         <x-restaurant-form 
                             :action="route('restaurants.update', $restaurants)" 
-                            :method="'UPDATE'" 
-                            :restaurants="$restaurants" 
+                            :method="'PUT'" 
+                            :restaurant="$restaurants" 
                         />
                     @else
                         <p>No restaurant found.</p>

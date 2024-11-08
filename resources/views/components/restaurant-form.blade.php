@@ -61,16 +61,16 @@
         @enderror
     </div>
 
-    @isset($restaurants->image)
+    @isset($restaurant->image)
     <div class="mb-4">
-        <img src="{{asset($restaurants->image) }}" alt="Restaurant Image" class="w-24 h-32 object-cover">
+        <img src="{{asset('images/restaurants/' .$restaurant->image) }}" alt="Restaurant Image" class="w-24 h-32 object-cover">
     </div>
     @endisset
 
     <div>
 
     <x-primary-button>
-        {{isset($restaurants)? 'Update Restaurant':'Add Restaurant'}}
+        {{isset($restaurant)? 'Update Restaurant':'Add Restaurant'}}
     </x-primary-button>
     </div>
 </form>

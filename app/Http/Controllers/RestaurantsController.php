@@ -115,7 +115,7 @@ class RestaurantsController extends Controller
     // Delete the restaurant record from the database
     $restaurants->delete();
 
-    // Redirect with a success message
+    // Redirect back to the index page with a success message
     return to_route('restaurants.index')->with('success', 'Restaurant deleted successfully!');
 }
 
