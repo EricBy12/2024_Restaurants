@@ -16,13 +16,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index');
-    Route::get('/restaurants/create', [RestaurantsController::class, 'create'])->name('restaurants.create');
-    Route::get('/restaurants/{restaurants}', [RestaurantsController::class, 'show'])->name('restaurants.show');
-    Route::get('/restaurants/{restaurants}/edit', [RestaurantsController::class, 'edit'])->name('restaurants.edit');
-    Route::put('/restaurants/{restaurants}/update', [RestaurantsController::class, 'update'])->name('restaurants.update');
-    Route::post('/restaurants', [RestaurantsController::class, 'store'])->name('restaurants.store');
-    Route::delete('/restaurants/{restaurants}', [RestaurantsController::class, 'destroy'])->name('restaurants.destroy');
+    Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index'); //Displays the index page
+    Route::get('/restaurants/create', [RestaurantsController::class, 'create'])->name('restaurants.create'); //Dispalys the create form
+    Route::get('/restaurants/{restaurants}', [RestaurantsController::class, 'show'])->name('restaurants.show'); //Displays an indevidual record
+    Route::get('/restaurants/{restaurants}/edit', [RestaurantsController::class, 'edit'])->name('restaurants.edit'); //Displays the edit form
+    Route::put('/restaurants/{restaurants}/update', [RestaurantsController::class, 'update'])->name('restaurants.update'); //Updates a record in the database
+    Route::post('/restaurants', [RestaurantsController::class, 'store'])->name('restaurants.store'); //Adds a record to the database
+    Route::delete('/restaurants/{restaurants}', [RestaurantsController::class, 'destroy'])->name('restaurants.destroy'); //Delets a record from the database
 });
 
 
