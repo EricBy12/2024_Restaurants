@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Creates the restaurants table in the database
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -23,6 +24,7 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
+     * Drops the restaurants table
      */
     public function down(): void
     {

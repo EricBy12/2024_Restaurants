@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">
                     <h3 class="font-semibold text-lg mb-4">Add New Restaurant:</h3>
-                    <!-- component for creating a restaurant reord -->
+                    <!-- component for creating a restaurant record -->
                     <x-restaurant-form
                     :action="route('restaurants.store')"
                     :method="'POST'"

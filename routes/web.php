@@ -11,12 +11,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
+// List of defined routes and their corresponding method
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index'); //Displays the index page
+    Route::get('/restaurants', [RestaurantsController::class, 'index'])->name('restaurants.index'); //Uses the index method from the RestaurantController to display a list of all of the records
     Route::get('/restaurants/create', [RestaurantsController::class, 'create'])->name('restaurants.create'); //Dispalys the create form
     Route::get('/restaurants/{restaurants}', [RestaurantsController::class, 'show'])->name('restaurants.show'); //Displays an indevidual record
     Route::get('/restaurants/{restaurants}/edit', [RestaurantsController::class, 'edit'])->name('restaurants.edit'); //Displays the edit form

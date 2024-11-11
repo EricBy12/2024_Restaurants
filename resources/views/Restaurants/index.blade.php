@@ -4,11 +4,12 @@
             {{ __('All Restaurants') }}
         </h2>
     </x-slot>
-    Component 
+    <!-- Component for displaying success message -->
     <x-alert-success>
         {{session('success')}}
     </x-alert-success>
     <div class="py-12">
+        <!-- Defines the layout and adds background and shadow effects -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">

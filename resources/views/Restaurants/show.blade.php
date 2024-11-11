@@ -11,6 +11,7 @@
             <div class="bg-white overflow-hiddent shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">
                     <h3 class="font-semibold text-lg mb-4">Restaurant Details</h3>
+                    <!-- Displays the restaurant details -->
                     <x-restaurant-details
                         :name="$restaurants->name"
                         :image="$restaurants->image"
