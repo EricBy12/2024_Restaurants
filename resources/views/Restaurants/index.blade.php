@@ -4,7 +4,7 @@
             {{ __('All Restaurants') }}
         </h2>
     </x-slot>
-    Component
+    Component 
     <x-alert-success>
         {{session('success')}}
     </x-alert-success>
