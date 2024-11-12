@@ -115,7 +115,7 @@ class RestaurantsController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     * deletes a record
+     * deletes a record from the database
      */
     public function destroy(Request $request, Restaurants $restaurants)
 {

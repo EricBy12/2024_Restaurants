@@ -10,7 +10,7 @@ Steps to Set up the Project:
 1. Launch Xampp
 2. Start the Apache and MySQL servers
 3. Open windows terminal and open the path to the project folder
-4. Run the command "php artisan migrate" to run the database migrations. Creates the restaurants table.
+4. Run the command "php artisan migrate" to run the database migrations. Creates the restaurants table. (Run "php artisan migrate:refresh" to run all the migrations again from scratch)
 5. Run the comand "php artisan db:seed" to add all of the restaurant records to the table.
 4. In one tab enter the command "php artisan serve" to start the local server, Then enter the url "http://127.0.0.1:8000/" into a browser
 5. In another terminal enter the command "npm run dev" to to start the application in developer mode

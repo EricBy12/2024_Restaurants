@@ -16,8 +16,6 @@
                             :method="'PUT'" 
                             :restaurant="$restaurants" 
                         />
-                    
-                     
                 </div>
             </div>
         </div>

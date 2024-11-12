@@ -3,7 +3,7 @@
 
 <form action="{{ $action }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <!-- Checks for the method -->
+    <!-- Checks for the method. POST for creating/PUT for updating-->
     @if($method === 'PUT' || $method === 'PATCH')
         @method($method)
     @endif
