@@ -24,6 +24,9 @@ class RestaurantsController extends Controller
      */
     public function create()
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('restaurants.index')->with('error', 'Access Denied.');
+        }
         return view('restaurants.create');
     }
 
