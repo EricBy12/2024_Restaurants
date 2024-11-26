@@ -10,4 +10,10 @@ class Restaurants extends Model
     use HasFactory;
     // Defines the attributes that can be mass filled
     protected $fillable = ['name', 'description', 'location', 'image'];
+
+    //Reviews Function
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
 }

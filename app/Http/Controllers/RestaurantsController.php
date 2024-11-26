@@ -68,7 +68,9 @@ class RestaurantsController extends Controller
      * Shows a single restaurant record
      */
     public function show(Restaurants $restaurants)
-    {        
+    {
+        //loads the restaurant with its reviews and the user that made the review
+        $restaurant->load('reviews.user');        
         return view('restaurants.show')->with('restaurants', $restaurants);                
     }
 
