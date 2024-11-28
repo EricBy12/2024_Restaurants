@@ -28,7 +28,19 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:1000',
+        ]);
+        
+        $restaurant->reviews()->create([
+            'user_id' => auth()->id,
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'restaurat_id' => $restaurant->id
+        ]);
+        
+        return ridirect()->route('restaurants.show', $restaurant)->with('success', 'Review added successfully.');
     }
 
     /**
