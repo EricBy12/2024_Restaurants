@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Restaurants;
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -26,21 +29,26 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Restaurants $restaurant )
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string|max:1000',
         ]);
+
+       // dd($request->input('comment'));
         
         $restaurant->reviews()->create([
-            'user_id' => auth()->id,
+            'user_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'restaurat_id' => $restaurant->id
+            'restaurant_id' => $restaurant->id
         ]);
+
+
+    
         
-        return ridirect()->route('restaurants.show', $restaurant)->with('success', 'Review added successfully.');
+        return redirect()->route('restaurants.show', $restaurant)->with('success', 'Review added successfully.');
     }
 
     /**

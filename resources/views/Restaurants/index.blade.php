@@ -8,6 +8,7 @@
     <x-alert-success>
         {{session('success')}}
     </x-alert-success>
+    
     <div class="py-12">
         <!-- Defines the layout and adds background and shadow effects -->
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">

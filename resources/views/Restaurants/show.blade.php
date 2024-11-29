@@ -5,7 +5,6 @@
         </h2>
 
     </x-slot>
-    
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hiddent shadow-sm sm:rounded-lg">
@@ -15,27 +14,42 @@
                     <x-restaurant-details
                         :name="$restaurants->name"
                         :image="$restaurants->image"
-                        :description="$restaurants->description"
+                        :description="$restaurants->description"        
                         :location="$restaurants->location"
                         />
                         <!-- Restaurant Reviews -->
-                        <h4 class="font-semibold text-md mt-8">Add a Review</h4>
-                        @if($restaurant->reviews->isEmpty())
+                    
+                        <h4 class="font-semibold text-md mt-8">Reviews</h4>
+                        @if($restaurants->reviews->isEmpty())
                         <p class="text-grey-600">No reviews yet.</p>
                         @else
                             <ul class="mt-4 space-y-4">
-                                @foreach($restaurant->reviews as $review)
+                                @foreach($restaurants->reviews as $review)
                                     <li class="bg-grey-100 p-4 rounded-lg">
                                         <p class="font-semibold">{{$review->user->name}} ({{$review->created_at->format('M d, Y')}})</p>
                                         <p>Rating: {{$review->rating}} / 5</p>
                                         <p>{{$review->comment}}</p>
+
+                                        @if($review->user->is(auth()->user()) || auth()->user()->rule === 'admin')
+                                            <a href="{{route('reviews.edit', $review)}}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
+                                                {{_('Edit Review')}}
+                                            </a>
+
+                                            <form action="POST" action="{{route('reviews.destroy', $review)}}">
+                                                @csrf
+                                                @method('delete')
+                                                <x-danger-button :hreff="route('reviews.destroy', '$review')" onclick="event.preventDefault(); this.closeest('form').submit();">
+                                                    {{__('Delete Review')}}
+                                                </x-danger-button>
+                                            </form>
+                                        @endif
                                     </li>
                                 @endforeach
                             </ul>
                         @endif
 
-                        <!-- Add a new review -->
-                        <h4 class="font-semibold text-md mt-8">Add a Review</h4>
+                    <!-- Add a new review -->
+                    <h4 class="font-semibold text-md mt-8">Add a Review</h4>
                         <form action="{{route('reviews.store', $restaurants)}}" method="POST" class="nt-4">
                             @csrf
                             <div class="mb-4">
@@ -60,4 +74,5 @@
             </div>
         </div>
     </div>
+    
 </x-app-layout>

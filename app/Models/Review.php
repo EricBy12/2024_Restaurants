@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use ILUMINATE\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Review extends Model
