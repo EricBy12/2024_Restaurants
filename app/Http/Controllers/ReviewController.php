@@ -64,7 +64,11 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        //
+        //Checks if the user is the owner or an admin
+        if(auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
+            return redirect()->route('restaurants.index')->width('error', 'Access denied.');
+        }
+        return view('revies.edit', compact('review'));
     }
 
     /**
@@ -72,7 +76,23 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        //Is this right?
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:1000',
+        ]);
+        
+        $restaurant->reviews()->create([
+            'user_id' => auth()->id(),
+            'rating' => $request->input('rating'),
+            'comment' => $request->input('comment'),
+            'restaurant_id' => $restaurant->id
+        ]);
+
+        // determins what values can be edited
+        $review->update($request->only(['rating', 'comment']));
+        
+        return redirect()->route('restaurants.show', $review->restaurant_id)->with('success', 'Review updated successfully.');
     }
 
     /**

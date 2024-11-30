@@ -27,6 +27,12 @@ Route::middleware('auth')->group(function () {
     Route::put('/restaurants/{restaurants}/update', [RestaurantsController::class, 'update'])->name('restaurants.update'); //Updates a record in the database
     Route::post('/restaurants', [RestaurantsController::class, 'store'])->name('restaurants.store'); //Adds a record to the database
     Route::delete('/restaurants/{restaurants}', [RestaurantsController::class, 'destroy'])->name('restaurants.destroy'); //Delets a record from the database
+    
+    // Creates all routes for Reviews
+    Route::resource('reviews', ReviewController::class);
+
+    //Overwrites the usual store route so it will accept a restaurant parameter
+    Route::post('restaurats/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 });
 
 
