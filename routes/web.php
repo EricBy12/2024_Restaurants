@@ -33,6 +33,16 @@ Route::middleware('auth')->group(function () {
 
     //Overwrites the usual store route so it will accept a restaurant parameter
     Route::post('restaurats/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+
+    // creates all routes for suppliers
+    Route::resource('suppliers', SuppliersController::class)->middleware('auth');
+    Route::get('/suppliers', [SuppliersController::class, 'index'])->name('suppliers.index');
+    Route::get('/suppliers/create', [SuppliersController::class, 'create'])->name('suppliers.create');
+    Route::get('/suppliers/{suppliers}', [SuppliersController::class, 'show'])->name('suppliers.show');
+    Route::get('/suppliers/{suppliers}/edit', [SuppliersController::class, 'edit'])->name('suppliers.edit');
+    Route::put('/suppliers/{suppliers}/update', [SuppliersController::class, 'update'])->name('suppliers.update');
+    Route::post('/suppliers', [SuppliersController::class, 'store'])->name('suppliers.store');
+    Route::delete('/suppliers/{suppliers}', [SuppliersController::class, 'destroy'])->name('suppliers.destroy');
 });
 
 

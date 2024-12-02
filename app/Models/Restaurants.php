@@ -16,4 +16,9 @@ class Restaurants extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    // restaurants can have many suppliers
+    public function suppliers() {
+        return $this->belongsToMany(suppliers::class);
+    }
 }
