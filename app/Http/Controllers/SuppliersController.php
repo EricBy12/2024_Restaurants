@@ -13,7 +13,8 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        //
+        $suppliers = Suppliers::all();
+        return view('suppliers.index', compact('suppliers'));
     }
 
     /**
@@ -21,7 +22,10 @@ class SuppliersController extends Controller
      */
     public function create()
     {
-        //
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('suppliers.index')->with('error', 'Access Denied.');
+        }
+        return view('suppliers.create');
     }
 
     /**
@@ -29,23 +33,43 @@ class SuppliersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|max:500',
+            'phone' => 'required|max:500',
+        ]);
+
+        //Create a supplier record in the database
+        Suppliers::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Redirect to the index page with a success message
+        return to_route('suppliers.index')->with('success', 'Supplier created successfully!');
     }
 
     /**
      * Display the specified resource.
+     * Shows a single supplier record
      */
-    public function show(Suppliers $suppliers)
+    public function show(suppliers $suppliers)
     {
-        //
+        //loads the supplier with its reviews and the user that made the review       
+        return view('suppliers.show')->with('suppliers', $suppliers);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Suppliers $suppliers)
+    public function edit(Suppliers $suppliers, Request $request)
     {
-        //
+
+        return view('suppliers.edit', compact('suppliers'));
+        
     }
 
     /**
@@ -53,7 +77,23 @@ class SuppliersController extends Controller
      */
     public function update(Request $request, Suppliers $suppliers)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|max:500',
+            'phone' => 'required|max:500',
+        ]);
+
+        //update a supplier record in the database
+        Suppliers::update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        //Redirect to the index page with a success message
+        return to_route('suppliers.index')->with('success', 'Supplier updated successfully!');
     }
 
     /**
@@ -61,6 +101,10 @@ class SuppliersController extends Controller
      */
     public function destroy(Suppliers $suppliers)
     {
-        //
+        // Deletes a supplier from the database
+    $suppliers->delete();
+
+    // Redirect back to the index page with a success message
+    return to_route('suppliers.index')->with('success', 'Supplier deleted successfully!');
     }
 }
