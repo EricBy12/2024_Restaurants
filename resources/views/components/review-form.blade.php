@@ -36,6 +36,6 @@
     </div>
     <!-- Button -->
     <x-primary-button>
-        {{isset($review) ? 'Update Review' 'Save Review'}}
+        {{isset($review) ? 'Update Review' : 'Save Review'}}
     </x-primary-button>
 </form>

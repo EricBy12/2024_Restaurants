@@ -30,6 +30,11 @@ Route::middleware('auth')->group(function () {
     
     // Creates all routes for Reviews
     Route::resource('reviews', ReviewController::class);
+    Route::get('/reviews/{reviews}', [ReviewController::class, 'show'])->name('reviews.show');
+    Route::get('/reviews/{reviews}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
+    Route::put('/reviews/{reviews}/update', [ReviewController::class, 'update'])->name('reviews.update');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::delete('/reviews/{reviews}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
     //Overwrites the usual store route so it will accept a restaurant parameter
     Route::post('restaurats/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');

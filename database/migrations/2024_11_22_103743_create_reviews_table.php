@@ -20,6 +20,8 @@ return new class extends Migration
             $table->integer('rating')->unsigned()->default('1'); //rating 1-5
             $table->text('comment')->nullable();
             $table->timestamps();
+            //Extra table to fix bug
+            $table->integer('restaurants_id')->constrained()->onDelete('cascade');
         });
     }
 

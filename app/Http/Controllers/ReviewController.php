@@ -68,7 +68,7 @@ class ReviewController extends Controller
         if(auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
             return redirect()->route('restaurants.index')->width('error', 'Access denied.');
         }
-        return view('revies.edit', compact('review'));
+        return view('reviews.edit', compact('review'));
     }
 
     /**
@@ -100,6 +100,10 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        //
+        // Deletes a review from the database
+    $review->delete();
+
+    // Redirect back to the index page with a success message
+    return to_route('restaurants.show',$review->restaurant_id )->with('success', 'Review deleted successfully!');
     }
 }
