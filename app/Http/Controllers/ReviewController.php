@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\Restaurants;
+use App\Models\reviews;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +29,7 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Restaurants $restaurant )
+    public function store(Request $request, Reviews $review )
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
@@ -38,17 +38,17 @@ class ReviewController extends Controller
 
        // dd($request->input('comment'));
         
-        $restaurant->reviews()->create([
+        $review->review()->create([
             'user_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'restaurant_id' => $restaurant->id
+            'review_id' => $review->id
         ]);
 
 
     
         
-        return redirect()->route('restaurants.show', $restaurant)->with('success', 'Review added successfully.');
+        return redirect()->route('reviews.show', $review)->with('success', 'Review added successfully.');
     }
 
     /**
@@ -66,7 +66,7 @@ class ReviewController extends Controller
     {
         //Checks if the user is the owner or an admin
         if(auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin') {
-            return redirect()->route('restaurants.index')->width('error', 'Access denied.');
+            return redirect()->route('reviews.index')->width('error', 'Access denied.');
         }
         return view('reviews.edit', compact('review'));
     }
@@ -82,17 +82,17 @@ class ReviewController extends Controller
             'comment' => 'nullable|string|max:1000',
         ]);
         
-        $restaurant->reviews()->create([
+        $review->review()->create([
             'user_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'restaurant_id' => $restaurant->id
+            'review_id' => $review->id
         ]);
 
         // determins what values can be edited
         $review->update($request->only(['rating', 'comment']));
         
-        return redirect()->route('restaurants.show', $review->restaurant_id)->with('success', 'Review updated successfully.');
+        return redirect()->route('reviews.show', $review->review_id)->with('success', 'Review updated successfully.');
     }
 
     /**
@@ -104,6 +104,6 @@ class ReviewController extends Controller
     $review->delete();
 
     // Redirect back to the index page with a success message
-    return to_route('restaurants.show',$review->restaurant_id )->with('success', 'Review deleted successfully!');
+    return to_route('reviews.show',$review->review_id )->with('success', 'Review deleted successfully!');
     }
 }
