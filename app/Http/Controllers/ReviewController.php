@@ -29,7 +29,7 @@ class ReviewController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, Reviews $review )
+    public function store(Request $request, Review $review )
     {
         $request->validate([
             'rating' => 'required|integer|min:1|max:5',
