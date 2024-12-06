@@ -20,11 +20,11 @@
                         <!-- Restaurant Reviews -->
                     
                         <h4 class="font-semibold text-md mt-8">Reviews</h4>
-                        @if($restaurants->reviews->isEmpty())
+                        @if($restaurants->review->isEmpty())
                         <p class="text-grey-600">No reviews yet.</p>
                         @else
                             <ul class="mt-4 space-y-4">
-                                @foreach($restaurants->reviews as $review)
+                                @foreach($restaurants->review as $review)
                                     <li class="bg-grey-100 p-4 rounded-lg">
                                         <p class="font-semibold">{{$review->user->name}} ({{$review->created_at->format('M d, Y')}})</p>
                                         <p>Rating: {{$review->rating}} / 5</p>

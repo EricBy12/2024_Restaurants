@@ -37,7 +37,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reviews/{reviews}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
     //Overwrites the usual store route so it will accept a restaurant parameter
-    Route::post('restaurats/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    Route::post('restaurants/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 
     // creates all routes for suppliers
     Route::resource('suppliers', SuppliersController::class)->middleware('auth');
