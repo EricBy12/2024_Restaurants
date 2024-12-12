@@ -28,6 +28,11 @@
                         {{__('Create New Restaurants')}}
                     </x-nav-link>
                     @endif
+                    @if(auth()->user()->role === 'admin')
+                    <x-nav-link :href="route('suppliers.create')" :action="request()->routeIs('suppliers.create')">
+                        {{__('Create New Supplier')}}
+                    </x-nav-link>
+                    @endif
                 </div>
             </div>
 

@@ -1,3 +1,24 @@
 <div>
-    <!-- People find pleasure in different ways. I find it in keeping my mind clear. - Marcus Aurelius -->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-x1 text-grey-800 leading-tight">
+            {{ __('Create New Supplier')}}
+        </h2>
+    </x-slot>
+
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-grey-900">
+                    <h3 class="font-semibold text-lg mb-4">Add New Supplier:</h3>
+                    <!-- component for creating a supplier record -->
+                    <x-supplier-form
+                    :action="route('suppliers.store')"
+                    :method="'POST'"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
 </div>

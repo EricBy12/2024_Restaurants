@@ -56,16 +56,16 @@ class SuppliersController extends Controller
      * Display the specified resource.
      * Shows a single supplier record
      */
-    public function show(suppliers $suppliers)
+    public function show(Supplier $suppliers)
     {
         //loads the supplier with its and the user that made the review       
-        return view('suppliers.show')->with('supplier', $supplier);
+        return view('suppliers.show', compact('suppliers'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Suppliers $suppliers, Request $request)
+    public function edit(Supplier $suppliers, Request $request)
     {
 
         return view('suppliers.edit', compact('suppliers'));
@@ -75,7 +75,7 @@ class SuppliersController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Suppliers $suppliers)
+    public function update(Request $request, Supplier $suppliers)
     {
         $request->validate([
             'name' => 'required',
@@ -99,12 +99,13 @@ class SuppliersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Suppliers $suppliers)
-    {
-        // Deletes a supplier from the database
+    public function destroy(Request $request, Supplier $suppliers)
+{
+
+    // Deletes a restaurant from the database
     $suppliers->delete();
 
     // Redirect back to the index page with a success message
     return to_route('suppliers.index')->with('success', 'Supplier deleted successfully!');
-    }
+}
 }
