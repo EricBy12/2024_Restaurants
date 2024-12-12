@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Restaurants;
-use App\Models\Suppliers;
+use App\Models\Supplier;
 use Carbon\Carbon;
 
 class RestaurantsSeeder extends Seeder
@@ -29,7 +29,7 @@ class RestaurantsSeeder extends Seeder
             //adds a restaurant to the table
             $restaurant = Restaurants::create(array_merge($restaurantData, ['created_at' => $currentTimestamp, 'updated_at' => $currentTimestamp]));
             //selects 2 random suppliers
-            $suppliers = Suppliers::inRandomOrder()->take(2)->pluck('id');
+            $suppliers = Supplier::inRandomOrder()->take(2)->pluck('id');
             //Attach suppliers to restaurants
             $restaurant->suppliers()->attach($suppliers);
         }

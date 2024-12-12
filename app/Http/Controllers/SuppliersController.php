@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Suppliers;
+use App\Models\Supplier;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -13,7 +13,7 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        $suppliers = Suppliers::all();
+        $suppliers = Supplier::all();
         return view('suppliers.index', compact('suppliers'));
     }
 
@@ -40,7 +40,7 @@ class SuppliersController extends Controller
         ]);
 
         //Create a supplier record in the database
-        Suppliers::create([
+        Supplier::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -58,8 +58,8 @@ class SuppliersController extends Controller
      */
     public function show(suppliers $suppliers)
     {
-        //loads the supplier with its reviews and the user that made the review       
-        return view('suppliers.show')->with('suppliers', $suppliers);
+        //loads the supplier with its and the user that made the review       
+        return view('suppliers.show')->with('supplier', $supplier);
     }
 
     /**
@@ -84,7 +84,7 @@ class SuppliersController extends Controller
         ]);
 
         //update a supplier record in the database
-        Suppliers::update([
+        Supplier::update([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,

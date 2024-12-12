@@ -2,9 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class supplier extends Model
+class Supplier extends Model
 {
-    //
+    use HasFactory;
+    
+    protected $fillable = ['name', 'email', 'phone'];
+    
+    // supplier can have many restaurants
+    public function restaurants() {
+        return $this->belongsToMany(restaurant::class);
+    }
 }

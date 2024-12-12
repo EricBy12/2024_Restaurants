@@ -20,6 +20,6 @@ class Restaurants extends Model
 
     // restaurants can have many suppliers
     public function suppliers() {
-        return $this->belongsToMany(Suppliers::class);
+        return $this->belongsToMany(Supplier::class);
     }
 }

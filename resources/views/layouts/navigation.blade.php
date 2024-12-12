@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('restaurants.index')" :active="request()->routeIs('restaurants.index')">
                         {{ __('View All Restaurants') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('suppliers.index')" :active="request()->routeIs('suppliers.index')">
+                        {{ __('View All Suppliers') }}
+                    </x-nav-link>
                     
 
                     @if(auth()->user()->role === 'admin')
