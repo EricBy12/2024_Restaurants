@@ -5,7 +5,7 @@
     <h1 class="font-bold text-black-600 mb-2" style="font-size: 3rem;">{{$name}}</h1>
 
     <div class="overflow-hidden rounded-lg mb-4 flex justify-center">
-        <img src="{{ asset('images/restaurants/' . $image) }}" alt="{{ $name }}" class="height: auto; object-cover">
+        <img src="{{ asset('images/restaurants/' . $image) }}" alt="{{ $name }}" class="img-thumbnail object-cover">
     </div>
 
     <h2 class="text-grey-500 text-sm italic mb-4" style="font-size: 1rem;">Location: {{ $location }}</h2>

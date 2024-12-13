@@ -31,9 +31,7 @@
                                 <!-- Buttons for edit and delete -->
                             <div class="mt-4 flex space-x-2">
                                 <!-- Edit button -->
-                                <a href="{{route('suppliers.edit', $supplier)}}" class="text-grey-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
-                                    Edit
-                                </a>
+                                <a href="{{route('suppliers.edit', $supplier)}}" class="text-grey-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">Edit</a>
                                 <!-- Delete Button -->
                                 <form action="{{route('suppliers.destroy', $supplier)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this restaurant?');">
                                     @csrf

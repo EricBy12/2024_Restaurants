@@ -18,7 +18,7 @@ class SupplierSeeder extends Seeder
         //Remember to give these actual values!!!
         //Seeds the reviews table
         Supplier::insert([
-            ['name' => 'Supplier 1', 'email' => 'supplier1@gmail.com', 'phone' => 'phoneNumber 1'],
+            ['name' => 'Bibendum Ireland', 'email' => 'www.candcgleeson.com', 'phone' => '0845 263 6924'],
             ['name' => 'Supplier 2', 'email' => 'supplier2@gmail.com', 'phone' => 'phoneNumber 2'],
             ['name' => 'Supplier 3', 'email' => 'supplier3@gmail.com', 'phone' => 'phoneNumber 3'],
             ['name' => 'Supplier 4', 'email' => 'supplier4@gmail.com', 'phone' => 'phoneNumber 4'],
