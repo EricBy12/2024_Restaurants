@@ -16,7 +16,24 @@
                         :email="$supplier->email"        
                         :phone="$supplier->phone"
                         />
+
+                        <h3 class="font-semibold text-lg mb-4">Restaurants Supplied</h3>
                         
+                        @foreach($supplier->restaurants as $restaurant)
+                        <div class="border rounded-lg shadow-md p-6 bg-white hover:shadow-lg transition duration-300"> <!-- class taken from restaurant-card -->
+                            <a href="{{ route('restaurants.show', $restaurant )}}">
+                                <!-- Restaurant Card -->
+                                <x-restaurant-card
+                                    :name="$restaurant->name"
+                                    :image="$restaurant->image"
+                                    :description="$restaurant->description"
+                                    :location="$restaurant->location"
+                                />
+                            </a>
+
+                            </div>
+                        </div>
+                        @endforeach
                 </div>
             </div>
         </div>

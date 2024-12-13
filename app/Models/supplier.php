@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Restaurants;
 
 class Supplier extends Model
 {
@@ -13,6 +14,6 @@ class Supplier extends Model
     
     // supplier can have many restaurants
     public function restaurants() {
-        return $this->belongsToMany(restaurant::class);
+        return $this->belongsToMany(Restaurants::class);
     }
 }

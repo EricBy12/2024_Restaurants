@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Supplier;
+use App\Models\Restaurants;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+
 
 class SuppliersController extends Controller
 {
@@ -13,7 +15,8 @@ class SuppliersController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::all();
+        //Gets all suppliers and restaurants related to each other.
+        $suppliers = Supplier::with('restaurants')->get();
         return view('suppliers.index', compact('suppliers'));
     }
 
@@ -25,7 +28,9 @@ class SuppliersController extends Controller
         if (auth()->user()->role !== 'admin') {
             return redirect()->route('suppliers.index')->with('error', 'Access Denied.');
         }
-        return view('suppliers.create');
+        // if you want to add restaurants to a supplier during create supplier.
+        $restaurants = Restaurants::all();
+        return view('suppliers.create', compact('restaurants'));
     }
 
     /**
@@ -33,20 +38,32 @@ class SuppliersController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required|max:500',
             'phone' => 'required|max:500',
+            'restaurants' => 'array'
         ]);
 
+        // if ($request->hasFile('image')) {
+        //     $imageName = time(). '.'$request->image->extension();
+        //     $request->image->move(public_path('images/suppliers'))
+        // }
+
+        $supplier = Supplier::create($validated);
+
+        if ($request->has('restaurants')) {
+            $supplier->restaurants()->attach($request->restaurants);
+        }
+
         //Create a supplier record in the database
-        Supplier::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
+        // Supplier::create([
+        //     'name' => $request->name,
+        //     'email' => $request->email,
+        //     'phone' => $request->phone,
+        //     'created_at' => now(),
+        //     'updated_at' => now()
+        // ]);
 
         //Redirect to the index page with a success message
         return to_route('suppliers.index')->with('success', 'Supplier created successfully!');
@@ -58,7 +75,8 @@ class SuppliersController extends Controller
      */
     public function show(Supplier $supplier)
     {
-        //loads the supplier with its and the user that made the review       
+        //gets all of the supplier_restaurant ids from the from the pivot table and then gets the suppliers form the suppliers table
+        $supplier->load('restaurants');
         return view('suppliers.show', compact('supplier'));
     }
 
