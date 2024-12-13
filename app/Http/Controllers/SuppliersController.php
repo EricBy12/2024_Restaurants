@@ -56,41 +56,53 @@ class SuppliersController extends Controller
      * Display the specified resource.
      * Shows a single supplier record
      */
-    public function show(Supplier $suppliers)
+    public function show(Supplier $supplier)
     {
         //loads the supplier with its and the user that made the review       
-        return view('suppliers.show', compact('suppliers'));
+        return view('suppliers.show', compact('supplier'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Supplier $suppliers, Request $request)
+    public function edit(Supplier $supplier, Request $request)
     {
 
-        return view('suppliers.edit', compact('suppliers'));
+        return view('suppliers.edit', compact('supplier'));
         
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $suppliers)
+    public function update(Request $request, Supplier $supplier)
     {
+
+       
+
+
         $request->validate([
             'name' => 'required',
             'email' => 'required|max:500',
             'phone' => 'required|max:500',
         ]);
 
+       
+       
+
         //update a supplier record in the database
-        Supplier::update([
+        $supplier->update([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+
+
+
+   
 
         //Redirect to the index page with a success message
         return to_route('suppliers.index')->with('success', 'Supplier updated successfully!');
@@ -99,11 +111,11 @@ class SuppliersController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, Supplier $suppliers)
+    public function destroy(Request $request, Supplier $supplier)
 {
 
     // Deletes a restaurant from the database
-    $suppliers->delete();
+    $supplier->delete();
 
     // Redirect back to the index page with a success message
     return to_route('suppliers.index')->with('success', 'Supplier deleted successfully!');

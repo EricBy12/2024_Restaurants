@@ -13,9 +13,9 @@
                         <!-- Displays the edit form -->
                         <h3 class="font-semibold text-lg mb-4">Edit Supplier:</h3>
                         <x-supplier-form 
-                            :action="route('suppliers.update', $suppliers)" 
+                            :action="route('suppliers.update', $supplier)" 
                             :method="'PUT'" 
-                            :supplier="$suppliers" 
+                            :supplier="$supplier" 
                         />
                 </div>
             </div>

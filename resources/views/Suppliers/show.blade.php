@@ -12,9 +12,9 @@
                     <h3 class="font-semibold text-lg mb-4">Supplier Details</h3>
                     <!-- Displays the supplier details -->
                     <x-supplier-details
-                        :name="$suppliers->name"
-                        :email="$suppliers->email"        
-                        :phone="$suppliers->phone"
+                        :name="$supplier->name"
+                        :email="$supplier->email"        
+                        :phone="$supplier->phone"
                         />
                         
                 </div>

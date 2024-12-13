@@ -14,7 +14,7 @@
                     <x-restaurant-details
                         :name="$restaurants->name"
                         :image="$restaurants->image"
-                        :description="$restaurants->description"        
+                        :description="$restaurants->description"
                         :location="$restaurants->location"
                         />
                         <!-- Restaurant Reviews -->
@@ -30,7 +30,7 @@
                                         <p>Rating: {{$review->rating}} / 5</p>
                                         <p>{{$review->comment}}</p>
 
-                                        @if($review->user->is(auth()->user()) || auth()->user()->rule === 'admin')
+                                        @if($review->user->is(auth()->user()) || auth()->user()->role === 'admin')
                                             <a href="{{route('reviews.edit', $review)}}" class="bg-yellow-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                                                 {{_('Edit Review')}}
                                             </a>
