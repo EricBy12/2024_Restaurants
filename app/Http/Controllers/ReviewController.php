@@ -42,7 +42,7 @@ class ReviewController extends Controller
             'user_id' => auth()->id(),
             'rating' => $request->input('rating'),
             'comment' => $request->input('comment'),
-            'restaurant_id' => $restaurant->id
+            'restaurants_id' => $restaurant->id
         ]);
 
 
@@ -98,7 +98,7 @@ class ReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Review $review)
+    public function destroy(Request $request, Review $review)
     {
         // Deletes a review from the database
     $review->delete();

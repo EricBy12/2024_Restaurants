@@ -95,18 +95,11 @@ class SuppliersController extends Controller
      */
     public function update(Request $request, Supplier $supplier)
     {
-
-       
-
-
         $request->validate([
             'name' => 'required',
             'email' => 'required|max:500',
             'phone' => 'required|max:500',
         ]);
-
-       
-       
 
         //update a supplier record in the database
         $supplier->update([
@@ -116,11 +109,6 @@ class SuppliersController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-
-
-
-
-   
 
         //Redirect to the index page with a success message
         return to_route('suppliers.index')->with('success', 'Supplier updated successfully!');

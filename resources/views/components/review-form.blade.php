@@ -40,4 +40,3 @@
         {{isset($review) ? 'Update Review' : 'Save Review'}}
     </x-primary-button>
 </form>
-

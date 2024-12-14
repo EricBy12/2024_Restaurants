@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             //Cascade means if the restaurant is deleted the reviews will also be deleted
-            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
+            $table->foreignId('restaurants_id')->constrained()->onDelete('cascade');
             //Cascade means if the user is deleted so are thier reviews
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('rating')->unsigned()->default('1'); //rating 1-5
             $table->text('comment')->nullable();
             $table->timestamps();
             //Extra table to fix bug
-            $table->integer('restaurants_id')->constrained()->onDelete('cascade');
+            //$table->integer('restaurants_id')->constrained()->onDelete('cascade');
         });
     }
 

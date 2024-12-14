@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-x1 text-grey-800 leading-tight">
-            {{ __('Create New Restaurant')}}
+            {{ __('Create New Review')}}
         </h2>
     </x-slot>
 
@@ -9,10 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-grey-900">
-                    <h3 class="font-semibold text-lg mb-4">Add New Restaurant:</h3>
-                    <!-- component for creating a restaurant record -->
-                    <x-restaurant-form
-                    :action="route('restaurants.store')"
+                    <h3 class="font-semibold text-lg mb-4">Add New Review:</h3>
+                    <!-- component for creating a review record -->
+                    <x-review-form
+                    :action="route('reviews.store')"
                     :method="'POST'"
                     />
                 </div>

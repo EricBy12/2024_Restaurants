@@ -9,11 +9,11 @@ class Review extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['user_id', 'rating', 'comment', 'restaurant_id'];
+    protected $fillable = ['user_id', 'rating', 'comment', 'restaurants_id'];
     
-    public function review()
+    public function restaurant()
     {
-        return $this->belongsTo(Review::class);
+        return $this->belongsTo(Restaurant::class);
     }
 
     public function user()
