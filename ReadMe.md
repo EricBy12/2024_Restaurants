@@ -1,4 +1,4 @@
-Project Name: Ca1 Basic Web applicstion
+Project Name: Ca1 Basic Web application
 
 Description: I developed a simple web application using the laravel framework
 The application allows the user to create, read, update and delete
@@ -22,3 +22,21 @@ How to use the project:
 3. If the user clicks the edit button on a restaurant they are redirected to the edit form whcih has an input field for name,description, location and image. All of these fields will already be filled with the information of the restaurant the user is currently editing. The user can change any information they like in the input fields and when they are done they can click the "UPDATE RESTAURANT" button which will update the record in the database with the new information the user entered. The user will then be redirected back to the index page and a message will appear at the top of the screen that says "Restaurant updated successfully!". The restaurant that has been edited will also display the updated information in the list of restaurants on the index page.
 5. if the user clicks on the "Create new Restaurant" button at the top of the page they will be redirected to the create form. The create form has an input field for the restaurant name, description, location and image. The user can input any data they like into the fields and then click the "ADD RESTAURANT" button. The user will then be redirected back to the index page and there will be a success message displayed that says "Restaurant created successfully!" and the restaurant the user created will be displayed in the list of restaurants.
 6. If the user clicks on a restaurant in the list they are redirected to a pacge with all of that restaurants details displayed.
+
+
+CA2: 
+For CA2 I Added a reviews table and a suppliers table. I created a one-to-many relationship for restaurants and reviews, a many-to-many relationship for restaurants and suppliers, and 2 roles for users: user and admin, onto the original CA1 project.
+
+User Roles:
+While regestering a new user the user has the option to select between the User role and the Admin role.
+Users can view restaurants and suppliers and can also leave a reviews on restaurants.
+Users cannot create, edit or delete any restaurants or suppliers and cannot edit or delete other users reviews.
+Admins can view, create, edit and delete any restaurants, suppliers or reviews.
+
+Restaurants and reviews have a  one to many relationship. On the show page for restaurants the user has the option to create a review on that restaurant by giving it a raiting from 1-5 and writing a comment.
+
+The restaurants table and suppliers table are connected by a pivot table and suppliers are randomly assigned restaurants to create the many to many rleationship. Suppliers have the restaurants they supply to listed under them in the suppliers show page.
+
+Known Bugs:
+Currently I cannot edit any of the reviews in the database.
+I also cannot edit any of the suppliers in the database.

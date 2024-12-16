@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/restaurants/{restaurants}', [RestaurantsController::class, 'destroy'])->name('restaurants.destroy'); //Delets a record from the database
     
     // Creates all routes for Reviews
-    Route::resource('reviews', ReviewController::class);
+    //Route::resource('reviews', ReviewController::class);
     Route::get('/reviews/{reviews}', [ReviewController::class, 'show'])->name('reviews.show');
     Route::get('/reviews/{reviews}/edit', [ReviewController::class, 'edit'])->name('reviews.edit');
     Route::put('/reviews/{reviews}/update', [ReviewController::class, 'update'])->name('reviews.update');
@@ -38,8 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/reviews/{reviews}', [ReviewController::class, 'destroy'])->name('reviews.destroy');
 
     //Overwrites the usual store route so it will accept a restaurant parameter
-    Route::post('restaurants/{restaurant}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
-
+    Route::post('restaurants/{restaurants}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+    //Route::post('reviews/{reviews}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
+   
+   
     // creates all routes for suppliers
     Route::resource('suppliers', SuppliersController::class)->middleware('auth');
     Route::get('/suppliers', [SuppliersController::class, 'index'])->name('suppliers.index');

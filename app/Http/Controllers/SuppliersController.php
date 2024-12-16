@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Supplier;
 use App\Models\Restaurants;
-
+use App\Models\Review;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -85,6 +85,9 @@ class SuppliersController extends Controller
      */
     public function edit(Supplier $supplier, Request $request)
     {
+        if (auth()->user()->role !== 'admin') {
+            return redirect()->route('suppliers.index')->with('error', 'Access Denied');
+        }
 
         return view('suppliers.edit', compact('supplier'));
         
@@ -101,7 +104,10 @@ class SuppliersController extends Controller
             'phone' => 'required|max:500',
         ]);
 
-        //update a supplier record in the database
+             
+
+
+        // update a supplier record in the database
         $supplier->update([
             'name' => $request->name,
             'email' => $request->email,
@@ -119,6 +125,9 @@ class SuppliersController extends Controller
      */
     public function destroy(Request $request, Supplier $supplier)
 {
+    if (auth()->user()->role !== 'admin') {
+        return redirect()->route('suppliers.index')->with('error', 'Access Denied');
+    }
 
     // Deletes a restaurant from the database
     $supplier->delete();

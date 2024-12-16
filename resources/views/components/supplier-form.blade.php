@@ -18,7 +18,7 @@
             id="name"
             value="{{old('name', $supplier->name ?? '')}}"
             required
-            class="mt-1 block w-full border grey-300 rounded mid shadow-sm/">
+            class="mt-1 block w-full border grey-300 rounded mid shadow-sm">
             @error('name')
             <p class="text-sm 600">{{ $message }}</p>
             @enderror
@@ -33,7 +33,7 @@
             id="email"
             value="{{old('email', $supplier->email ?? '')}}"
             required
-            class="mt-1 block w-full border grey-300 rounded mid shadow-sm/">
+            class="mt-1 block w-full border grey-300 rounded mid shadow-sm">
             @error('email')
             <p class="text-sm 600">{{ $message }}</p>
             @enderror
@@ -48,7 +48,7 @@
             id="phone"
             value="{{old('phone', $supplier->phone ?? '')}}"
             required
-            class="mt-1 block w-full border grey-300 rounded mid shadow-sm/">
+            class="mt-1 block w-full border grey-300 rounded mid shadow-sm">
             @error('phone')
             <p class="text-sm 600">{{ $message }}</p>
             @enderror

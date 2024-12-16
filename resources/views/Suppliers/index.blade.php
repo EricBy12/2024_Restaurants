@@ -33,12 +33,10 @@
                                 <!-- Edit button -->
                                 <a href="{{route('suppliers.edit', $supplier)}}" class="text-grey-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">Edit</a>
                                 <!-- Delete Button -->
-                                <form action="{{route('suppliers.destroy', $supplier)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this restaurant?');">
+                                <form action="{{route('suppliers.destroy', $supplier)}}" method="POST" onsubmit="return confirm('Are you sure you want to delete this supplier?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="bg-red-500 hover:bg-red-700 text-grey-600 bg-orange-300 hover:bg-orange-700 font-bold py-2 px-4 rounded">
-                                        Delete
-                                    </button>
+                                    <button type="submit" class="bg-red-500 hover:bg-red-700 hover:bg-orange-700 font-bold py-2 px-4 rounded">Delete</button>
                                 </form>
                             </div>
                         </div>

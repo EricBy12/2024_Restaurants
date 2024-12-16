@@ -15,14 +15,13 @@ class SupplierSeeder extends Seeder
      */
     public function run(): void
     {
-        //Remember to give these actual values!!!
-        //Seeds the reviews table
+        //Seeds the suppliers table
         Supplier::insert([
-            ['name' => 'Bibendum Ireland', 'email' => 'www.candcgleeson.com', 'phone' => '0845 263 6924'],
-            ['name' => 'Supplier 2', 'email' => 'supplier2@gmail.com', 'phone' => 'phoneNumber 2'],
-            ['name' => 'Supplier 3', 'email' => 'supplier3@gmail.com', 'phone' => 'phoneNumber 3'],
-            ['name' => 'Supplier 4', 'email' => 'supplier4@gmail.com', 'phone' => 'phoneNumber 4'],
-            ['name' => 'Supplier 5', 'email' => 'supplier5@gmail.com', 'phone' => 'phoneNumber 5']
+            ['name' => 'Bibendum Ireland', 'email' => 'therese.otoole@bibendum-wine.ie', 'phone' => '0845 263 6924'],
+            ['name' => 'Birra Moretti', 'email' => 'notpepsi@gmail.com', 'phone' => '1800 317 318'],
+            ['name' => 'SupplFrylite', 'email' => 'supplfrylite', 'phone' => '02871383133'],
+            ['name' => 'Hugh Jordan', 'email' => 'hughjordan@gmail.com', 'phone' => '555 123-4567'],
+            ['name' => 'Peninsula', 'email' => 'peninsula@gmail.com', 'phone' => '555 987-6543']
         ]);
     }
 }

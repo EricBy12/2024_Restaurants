@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Restaurants;
 
 class Review extends Model
 {
@@ -13,7 +14,7 @@ class Review extends Model
     
     public function restaurant()
     {
-        return $this->belongsTo(Restaurant::class);
+        return $this->belongsTo(Restaurants::class);
     }
 
     public function user()

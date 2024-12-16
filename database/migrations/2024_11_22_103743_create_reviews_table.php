@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        //creates the reviews table
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             //Cascade means if the restaurant is deleted the reviews will also be deleted

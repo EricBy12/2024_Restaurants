@@ -14,7 +14,7 @@ class Restaurants extends Model
     protected $fillable = ['name', 'description', 'location', 'image'];
 
     //Reviews Function
-    public function review()
+    public function reviews()
     {
         return $this->hasMany(Review::class);
     }

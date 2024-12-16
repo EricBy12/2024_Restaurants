@@ -28,6 +28,10 @@
                                     :location="$restaurant->location"
                                 />
                             </a>
+
+                            if (auth()->user()->role === 'admin') {
+                            return redirect()->route('suppliers.index')->with('error', 'Access Denied.');
+        
                                 <!-- Buttons for edit and delete -->
                             <div class="mt-4 flex space-x-2">
                                 <!-- Edit button -->
@@ -42,6 +46,7 @@
                                         Delete
                                     </button>
                                 </form>
+                            }
                             </div>
                         </div>
                         @endforeach
